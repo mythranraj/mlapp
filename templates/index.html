@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Performance Menu</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #1f1f2e;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px;
+    }
+    .container {
+      width: 80%;
+    }
+    h1 {
+      text-align: center;
+      color: #00adb5;
+    }
+    .card {
+      background: #2a2a3d;
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    a, button {
+      color: #fff;
+      background: #00adb5;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    a:hover, button:hover {
+      background: #01999e;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📊 Student Performance Predictor - Dashboard</h1>
+
+    <div class="card">
+      <h3>📈 Predict Performance</h3>
+      <p>Enter student inputs to predict final score:</p>
+      <form action="/predict" method="post">
+        <label>Study Hours:</label><br>
+        <input type="number" name="study_hours" step="any" required><br><br>
+        <label>Previous Score:</label><br>
+        <input type="number" name="previous_score" step="any" required><br><br>
+        <button type="submit">Predict</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h3>📂 Upload Dataset</h3>
+      <p>Upload a new dataset (CSV) to retrain the model.</p>
+      <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".csv" required><br><br>
+        <button type="submit">Upload</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h3>⚙️ Train Model</h3>
+      <p>Click below to train the linear regression model on current data.</p>
+      <a href="/train">Train Model</a>
+    </div>
+
+    <div class="card">
+      <h3>📊 View Dataset</h3>
+      <p>See the full dataset currently used for predictions.</p>
+      <a href="/dataset">View Dataset</a>
+    </div>
+  </div>
+</body>
+</html>
